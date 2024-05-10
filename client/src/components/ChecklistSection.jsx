@@ -22,7 +22,7 @@ function ChecklistSection(props){
         {habit_id: 11, habit_group: 'Monthly', habit_name: 'Monthly3'},
         {habit_id: 12, habit_group: 'Monthly', habit_name: 'Monthly4'},
     ])
-    */
+    
     function addNewItem(checklistId, newItem){
         if (checklistId == 1) {
             setDailyTasks((prevItems) => {
@@ -73,6 +73,7 @@ function ChecklistSection(props){
             }))
         }
     }
+    */
     //console.log(props.data.filter(a => a['habit_group'] == 'Daily'))
     //console.log(props.data[0])
     return (
