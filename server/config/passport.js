@@ -5,7 +5,9 @@ import bcrypt from "bcrypt"
 import env from 'dotenv';
 import Pool from "./config.js";
 
-env.config()
+env.config({
+    path: '../.env'
+})
 
 // LOCAL Strategy configuration
 passport.use("local",

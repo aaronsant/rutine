@@ -1,4 +1,6 @@
 import express from "express";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url"; // THESE NEXT 2 LINES LET US GRAB DIRECTORY NAME DYNAMICALLY
 import bodyParser from "body-parser";
 import env from "dotenv";
 import cors from "cors";
@@ -9,6 +11,8 @@ import authRouter from "./routes/authRouter.js";
 import habitRouter from "./routes/habitRouter.js";
 import profileRouter from "./routes/profileRouter.js";
 import {scheduledDailyUpdate, scheduledWeeklyUpdate, scheduledMonthlyUpdate} from "./tasks/scheduledInserts.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 env.config({
     path: '../.env'
