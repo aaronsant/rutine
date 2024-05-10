@@ -6,7 +6,7 @@ import axios from "axios";
 import { isSameDay, isSameWeek, isSameMonth} from "date-fns"
 //import ProgressHero from "../components/ProgressHero";
 
-function Progress() {
+function Progress(props) {
     const [habitData, setHabitData] = useState([]);
     const [habitGroups, setHabitGroups] = useState(["Daily", "Weekly", "Monthly"]);
     const [selectedDate, setSelectedDate] = useState(new Date())
@@ -25,7 +25,7 @@ function Progress() {
     //progress_id, date, habit_id, habit_group, habit_name, completed
     async function getHabits() {
         try {
-            const response = await axios.get('api/v1/get/all')
+            const response = await axios.get(`${props.API_URL}/api/v1/get/all`)
             //console.log(response.data)
             setHabitData(response.data)
         } catch (error) {
@@ -37,7 +37,7 @@ function Progress() {
 
     async function addNewItem(group, newItem) {
         try {
-            const response = await axios.post('api/v1/add', { habitName: newItem, habitGroup: group})
+            const response = await axios.post(`${props.API_URL}/api/v1/add`, { habitName: newItem, habitGroup: group})
             setHabitData(prevData => [...prevData, {
                 completed: false,
                 date: response.data.date_created,
@@ -59,7 +59,7 @@ function Progress() {
     async function deleteHabit(habitID, progressID) {
         try {
             setHabitData(prev => prev.filter(habit => habit.progress_id !== progressID))
-            await axios.patch('api/v1/deactivate', {habitID: habitID, progressID: progressID});
+            await axios.patch(`${props.API_URL}/api/v1/deactivate`, {habitID: habitID, progressID: progressID});
             console.log("Success deactivating habit: client")
         } catch (error) {
             console.log("Error deactivating habit: client")
@@ -80,7 +80,7 @@ function Progress() {
             })
             //console.log(`${habitID} changed to ${updatedTask} which is ${progressID}`)
             setHabitData(updatedHabitData)
-            await axios.patch('api/v1/edit', {habitID: habitID, updatedTask: updatedTask, progressID: progressID});
+            await axios.patch(`${props.API_URL}/api/v1/edit`, {habitID: habitID, updatedTask: updatedTask, progressID: progressID});
             console.log("Success updating habit name: client");
         } catch (error) {
             console.log("Error updating habit: client")
@@ -100,7 +100,7 @@ function Progress() {
                 }
             })
             setHabitData(updatedHabitData);
-            await axios.patch("api/v1/checkbox", {progressID: progressID, isCompleted: !prevChecked})
+            await axios.patch(`${props.API_URL}/api/v1/checkbox`, {progressID: progressID, isCompleted: !prevChecked})
             console.log("Success updating habit progress: client")
         } catch (error) {
             console.log("Error updating habit progress: client")
@@ -129,7 +129,7 @@ function Progress() {
             })
             setHabitData(updatedHabitData);
             console.log(updatedHabitData)
-            await axios.patch("api/v1/reorder", {dataToReorder: dataToReorder})
+            await axios.patch(`${props.API_URL}/api/v1/reorder`, {dataToReorder: dataToReorder})
             console.log("Data Reordered Succesfully")
         } catch (error) {
             console.log("Error")
@@ -152,6 +152,7 @@ function Progress() {
         return filteredData.sort((a,b) => a.display_order - b.display_order)
     }
 
+    /*
     async function fillHabits() {
         try {
             await axios.post("/fillHabits")
@@ -161,7 +162,8 @@ function Progress() {
             console.log("error filling habits")
         }
     }
-
+    */
+   
     return (
         <div>
             {errorMsg === "" ? null : <div className="prog-page-error" onClick={() => setErrorMsg("")}>{errorMsg}</div>}

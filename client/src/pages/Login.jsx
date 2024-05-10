@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Login() {
+function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMsg, setErrorMsg] = useState("")
@@ -16,7 +16,7 @@ function Login() {
         e.preventDefault()
         console.log("form submitted")
         try {
-            const response = await axios.post('/auth/login', {email, password})
+            const response = await axios.post(`${props.API_URL}/auth/login`, {email, password})
             setEmail("");
             setPassword("");
             console.log(response)
@@ -35,7 +35,7 @@ function Login() {
 
     async function googleAuth() {
         try {
-            window.open(`http://localhost:5000/auth/google`, '_self')
+            window.open(`${API_URL}/auth/google`, '_self')
         } catch (error) {
             console.log(error)
         }

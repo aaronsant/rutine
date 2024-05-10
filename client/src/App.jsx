@@ -16,6 +16,7 @@ import axios from "axios";
 
 function App() {
     const [user, setUser] = useState(null)
+    const API_URL = (process.env.NODE_ENV === "production" ? "https://rutine-238283dd5db6.herokuapp.com": "http://localhost:5000")
 
     useEffect(() => {
         getUser()
@@ -23,7 +24,7 @@ function App() {
 
 const getUser = async () => {
     try {
-        const response = await axios.get("auth/login/success")
+        const response = await axios.get(`${API_URL}/auth/login/success`)
         if (response.data.user) {
             setUser(response.data.user)
         } else {
@@ -42,22 +43,22 @@ const getUser = async () => {
         <Router>
             <Header user={user} />
             <Routes>
-                <Route exact path="/" element={<Home />} />
+                <Route exact path="/" element={<Home API_URL={API_URL}/>} />
                 <Route 
                     path="/progress" 
-                    element={user ? <Progress /> : <Navigate to={"/login"}/>} 
+                    element={user ? <Progress API_URL={API_URL}/> : <Navigate to={"/login"}/>} 
                 />
                 <Route 
                     path="/profile" 
-                    element={user ? <Profile user={user} setUser={setUser}/> : <Navigate to={"/login"}/>}
+                    element={user ? <Profile user={user} setUser={setUser} API_URL={API_URL}/> : <Navigate to={"/login"}/>}
                 />
                 <Route 
                     path="/login"
-                    element={user ? <Navigate to={"/progress"}/> : <Login />}
+                    element={user ? <Navigate to={"/progress"}/> : <Login API_URL={API_URL}/>}
                 />
                 <Route 
                     path="/register" 
-                    element={user ? <Navigate to={"/progress"}/> : <Register/>}
+                    element={user ? <Navigate to={"/progress"}/> : <Register API_URL={API_URL}/>}
                 />
             </Routes>
             

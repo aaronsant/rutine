@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Register() {
+function Register(props) {
     const [showRegistrationForm, setShowRegistrationForm] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -57,7 +57,7 @@ function Register() {
         const validForm = validateEmail(email) & validatePassword(password) & passwordMatchError === ""
         if (validForm) {
             try {
-                await axios.post('/auth/register', {name, email, password})
+                await axios.post(`${props.API_URL}/auth/register`, {name, email, password})
                 setName("");
                 setEmail("");
                 setPassword("");

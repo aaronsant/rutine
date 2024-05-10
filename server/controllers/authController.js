@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import Pool from "../config/config.js";
 
 const saltRounds = 10;
-const clientURL = "http://localhost:3000"
+const clientURL = (process.env.NODE_ENV === "production" ? "https://rutine-238283dd5db6.herokuapp.com":"http://localhost:3000")
 
 // Controller for handling local login
 export const login = async (req, res, next) => {

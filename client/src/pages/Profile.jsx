@@ -68,7 +68,7 @@ function Profile(props) {
         console.log(validForm)
         if (validForm) {
             try {             
-                await axios.patch("profile/update/userinfo", {name: newName, email: newEmail}) 
+                await axios.patch(`${props.API_URL}/profile/update/userinfo`, {name: newName, email: newEmail}) 
                 setInfoSuccessMessage("Success Updating User Info")
                 props.setUser(prev => {
                     return {
@@ -99,7 +99,7 @@ function Profile(props) {
         if (validForm) {
             console.log("isValid")
             try {
-                await axios.patch("profile/update/password", {oldPassword: oldPassword, newPassword: newPassword})
+                await axios.patch(`${props.API_URL}/profile/update/password`, {oldPassword: oldPassword, newPassword: newPassword})
                 console.log("here")
                 setPasswordSuccessMessage("Success Updating Password")
                 setTimeout(()=> {window.location.reload()}, 2000)
@@ -121,7 +121,7 @@ function Profile(props) {
 
     async function countHabits() {
         try {
-            const result = await axios.get("api/v1/count")
+            const result = await axios.get(`${props.API_URL}/api/v1/count`)
             setNumHabits(result.data)
         } catch (error) {
             console.log(error)

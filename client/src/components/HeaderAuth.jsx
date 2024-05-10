@@ -14,7 +14,7 @@ function HeaderAuth(props) {
 
     async function logout() {
         try {
-            await axios.get("auth/logout")
+            await axios.get(`${props.API_URL}/auth/logout`)
             navigate('/')
             window.location.reload()
         } catch (error) {
