@@ -4,7 +4,7 @@ import { MdMenu } from "react-icons/md";
 import { IconContext } from "react-icons";
 
 
-function HeaderUnauth() {
+function HeaderUnauth(props) {
     const [showNavbar, setShowNavbar] = useState(false)
 
     function handleShowNavbar() {
@@ -14,7 +14,7 @@ function HeaderUnauth() {
     return (
             <div className="container">
                 <Link to="/" className="site-title">
-                    MY SITE
+                    {props.brand}
                 </Link>
                 <div className="menu-icon" onClick={handleShowNavbar}>
                     <IconContext.Provider value={{size: 30}}>

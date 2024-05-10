@@ -81,6 +81,62 @@ body {
     height: 2.5rem;
   }
 
+  .homepage-hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(68,97,97,1) 100%);  }
+
+  .homepage-hero h1{
+    font-weight: 800;
+    margin: 5px;
+  }
+
+  .homepage-hero h3{
+    font-weight: 500;
+    margin: 10px;
+  }
+  .hero-buttons{
+    display: flex;
+    gap: 10px;
+    align-content: center;
+  }
+
+  .about-section{
+    display: flex;
+    margin: 50px;
+    justify-content: center;
+  }
+
+  .about-box{
+    width: 60%;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    background-color:rgb(115, 115, 115);
+    text-align: center;
+  }
+
+  .hero-button{
+    font-size: 1em;
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    font-family: inherit;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .hero-button:hover{
+    opacity: 0.7;
+  }
+
+
+
   .prog-page-error{
     width: 70%;
     max-width: 500px;

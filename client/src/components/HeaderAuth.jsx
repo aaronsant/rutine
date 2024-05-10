@@ -25,7 +25,7 @@ function HeaderAuth(props) {
     return (
             <div className="container">
                 <Link to="/" className="site-title">
-                    MY SITE
+                    {props.brand}
                 </Link>
                 <div className="menu-icon" onClick={handleShowNavbar}>
                     <IconContext.Provider value={{size: 30}}>
