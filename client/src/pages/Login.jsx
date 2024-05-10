@@ -35,7 +35,7 @@ function Login(props) {
 
     async function googleAuth() {
         try {
-            window.open(`${API_URL}/auth/google`, '_self')
+            window.open(`${props.API_URL}/auth/google`, '_self')
         } catch (error) {
             console.log(error)
         }

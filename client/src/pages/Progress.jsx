@@ -163,7 +163,7 @@ function Progress(props) {
         }
     }
     */
-   
+
     return (
         <div>
             {errorMsg === "" ? null : <div className="prog-page-error" onClick={() => setErrorMsg("")}>{errorMsg}</div>}
@@ -181,7 +181,9 @@ function Progress(props) {
                 updateProgress={updateHabitProgress}
                 reorderData={reorderData}
             />
-            <button type="button" onClick={fillHabits}>FILL HABITS TO CURRENT DATE</button>
+            {
+                //<button type="button" onClick={fillHabits}>FILL HABITS TO CURRENT DATE</button>
+            }
             <ChartSection
                 data={habitData}
             /> 
