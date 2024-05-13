@@ -58,4 +58,5 @@ app.listen(port, () => {
     scheduledDailyUpdate();
     scheduledWeeklyUpdate();
     scheduledMonthlyUpdate();
+    
 })

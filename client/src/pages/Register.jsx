@@ -65,6 +65,7 @@ function Register(props) {
                 setServerError("");
                 window.location.reload()
             } catch (error) {
+                console.log(error)
                 if (error.response.status === 409) {
                     setServerError("Email is already in use. Please try signing in.")
                 } else {
@@ -82,7 +83,7 @@ function Register(props) {
 
     async function googleAuth() {
         try {
-            window.open(`http://localhost:5000/auth/google`, '_self')
+            window.open(`${props.API_URL}/auth/google`, '_self')
         } catch (error) {
             console.log(error)
             setServerError("Error Signing in with Google. Please try again later.")

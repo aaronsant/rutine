@@ -1,6 +1,11 @@
 import passport from "passport";
 import bcrypt from 'bcrypt';
 import Pool from "../config/config.js";
+import env from 'dotenv';
+
+env.config({
+    path:'../.env'
+})
 
 const saltRounds = 10;
 const clientURL = (process.env.NODE_ENV === "production" ? "https://rutine-238283dd5db6.herokuapp.com":"http://localhost:3000")
@@ -9,12 +14,13 @@ const clientURL = (process.env.NODE_ENV === "production" ? "https://rutine-23828
 export const login = async (req, res, next) => {
     console.log('login reached')
     passport.authenticate("local", {
-        successRedirect: `/`,
+        successRedirect: `${clientURL}`,
     })(req, res, next); //Whenever using passport.authenticate NEED to have (req,res,next)
 }
 
 // Controller for handling local login success
 export const loginSuccess = async (req, res, next) => {
+    console.log('success')
     if (req.user) {
         console.log('login success')
         res.status(200).json({

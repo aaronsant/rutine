@@ -15,6 +15,8 @@ passport.use("local",
         {usernameField: 'email' }, 
         async function verify(email, password, cb) {
             try {
+                console.log(email)
+                console.log(password)
                 const result = await Pool.query("SELECT * FROM users WHERE email = $1",
                 [email]);
 
