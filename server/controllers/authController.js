@@ -104,6 +104,7 @@ export const googleAuthCallback = async (req, res, next) => {
 }
 
 export const logout = async(req, res) => {
+    console.log("LOGGING OUT")
     req.logout(function(err) {
         if (err) { return next(err); }
         res.redirect('/')

@@ -41,7 +41,7 @@ const getUser = async () => {
 
     return (
         <Router>
-            <Header user={user} />
+            <Header user={user} API_URL={API_URL}/>
             <Routes>
                 <Route exact path="/" element={<Home API_URL={API_URL}/>} />
                 <Route 
