@@ -29,6 +29,7 @@ function CalendarSection(props){
 
     function onDateClick(day){
         props.setDate(day);
+        console.log(day)
     };
 
     function days(){
