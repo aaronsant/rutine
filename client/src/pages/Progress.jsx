@@ -142,7 +142,7 @@ function Progress(props) {
         const filteredData = allData.filter(entry => {
             let entryDate = new Date(entry.date);
             if (entry.habit_group == 'Daily') {
-                console.log(entryDate)
+                console.log(`entry date ${entryDate} for ${entry.date}`)
                 return (isSameDay(date, entryDate))
             } else if (entry.habit_group == 'Weekly') {
                 return (isSameWeek(date, entryDate, {weekStartsOn: 1}))
