@@ -136,7 +136,7 @@ function Profile(props) {
                 <div className="profile-card radial-gradient">
                     <h2>{props.user.name}</h2>
                     <h4>Active Habits: {numHabits}</h4>
-                    <h4>Member Since: {new Date(props.user.date_created).toLocaleDateString()}</h4>
+                    <h4>Member Since: {new Date(props.user.date_created.slice(0,-1)).toLocaleDateString()}</h4>
                 </div>
                 <div className="profile-form">
                 {infoServerError === "" ? null : <p className="login-error">{infoServerError}</p>}
