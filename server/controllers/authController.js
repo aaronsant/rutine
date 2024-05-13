@@ -8,7 +8,7 @@ env.config({
 })
 
 const saltRounds = 10;
-const clientURL = (process.env.NODE_ENV === "production" ? "https://rutine-238283dd5db6.herokuapp.com":"http://localhost:3000")
+const clientURL = (process.env.NODE_ENV === "production" ? "http://rutine-238283dd5db6.herokuapp.com":"http://localhost:3000")
 
 // Controller for handling local login
 export const login = async (req, res, next) => {
