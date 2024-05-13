@@ -98,8 +98,8 @@ export const loginWithGoogle = async (req, res, next) => {
 // Controller for handling callback for Google auth strategy
 export const googleAuthCallback = async (req, res, next) => {
     passport.authenticate("google", {
-        successRedirect: `${clientURL}/progress`,
-        failureRedirect: `${clientURL}/login`,
+        successRedirect: `/progress`, //${clientURL}
+        failureRedirect: `/login`, //${clientURL}
     })(req,res,next);
 }
 
