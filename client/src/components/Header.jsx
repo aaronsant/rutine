@@ -12,7 +12,7 @@ function Header(props) {
     function headerContent() {
         if(props.user) {
             return (
-                <HeaderAuth brand={brand} API_URL={API_URL}/>
+                <HeaderAuth brand={brand} API_URL={props.API_URL}/>
             )
         }else if(props.user === false){
             return (
