@@ -1,3 +1,4 @@
+// server/controllers/habitController.js
 import Pool from "../config/config.js";
 import format from "pg-format";
 
@@ -46,7 +47,7 @@ export const addHabit = async(req, res) => {
             const displayOrderArr = await Pool.query("SELECT (display_order) FROM habit_details WHERE habit_group=$1 AND user_id=$2",
             [habitGroup, userID])
             const nextDisplayOrder = Math.max(...[ 0,...displayOrderArr.rows.map((habit) => habit.display_order)]) + 1
-            console.log(nextDisplayOrder)
+
             //INSERT NEW HABIT WITH DISPLAY NUMBER INTO HABIT_DETAILS
             const result = await Pool.query("INSERT INTO habit_details (user_id, habit_group, habit_name, display_order) VALUES ($1, $2, $3, $4) RETURNING *", 
             [userID, habitGroup, habitName, nextDisplayOrder]);
@@ -55,7 +56,6 @@ export const addHabit = async(req, res) => {
             [result.rows[0].habit_id, result.rows[0].habit_name])
             var addedItem = result.rows[0];
             addedItem.progress_id = progressID.rows[0].progress_id;
-            //console.log(addedItem)
             res.json(addedItem)
         } catch (error) {
             console.log("Error adding habit to database")
@@ -83,7 +83,6 @@ export const autoInsert = async(req, res) => {
         const query = format("INSERT INTO habit_progress (habit_id, habit_name) VALUES %L", 
         activeHabits);
         Pool.query(query)
-        console.log("Successful automatic insert")
         res.status(200).json({message: "Successful"})
     } catch (error) {
         console.log(`Error inserting ${group} progress data`)
@@ -101,7 +100,7 @@ export const deactivateHabit = async(req, res) => {
             [habitID])
             const progressResult = await Pool.query("DELETE FROM habit_progress WHERE progress_id = $1",
             [progressID])
-            console.log("Success deactivating habit: server")
+            //console.log("Success deactivating habit: server")
             res.json(result.rows[0])
         } catch (error) {
             console.log("Error deactivating habit: server")
@@ -121,7 +120,7 @@ export const editHabit = async(req, res) => {
             [updatedTask, habitID]);
             const progressResult = await Pool.query("UPDATE habit_progress SET habit_name = $1 WHERE progress_id = $2 RETURNING *",
             [updatedTask, progressID])
-            console.log("Success updating habit name: server");
+            //console.log("Success updating habit name: server");
             res.json(result.rows[0])
         } catch (error) {
             console.log("Error updating habit: server")
@@ -139,7 +138,7 @@ export const checkHabit = async(req, res) => {
         try {
             const result = await Pool.query("UPDATE habit_progress SET completed = $1 WHERE progress_id = $2 RETURNING *", 
             [isCompleted, progressID]);
-            console.log(`Success updating habit progress ${progressID}: server`)
+            //console.log(`Success updating habit progress ${progressID}: server`)
             res.json(result.rows[0])
         } catch (error) {
             console.log("Error updating habit progress: server")

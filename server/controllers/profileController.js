@@ -1,3 +1,4 @@
+// server/controllers/profileController.js
 import Pool from "../config/config.js";
 import bcrypt from "bcrypt";
 
@@ -47,7 +48,7 @@ export const updatePassword = async(req,res) => {
             [userID]);
             const storedHashedPassword = dbResult.rows[0].password_hash;
             if (storedHashedPassword === "GOOGLE") { //CHECK IF A GOOGLE USER
-                console.log("google user")
+                //console.log("google user")
                 res.status(400).json({message:"Error: Google User"})
             } else {
                 //COMPARE PASSWORDS
@@ -66,7 +67,7 @@ export const updatePassword = async(req,res) => {
                                         // UPDATE PASSWORD HASH IN DB
                                         await Pool.query("UPDATE users SET password_hash = $1 WHERE user_id = $2 RETURNING *",
                                         [hash, userID ]);
-                                        console.log(`Success updating password for ${userID}`);
+                                        //console.log(`Success updating password for ${userID}`);
                                         res.status(200).json({message:"Success"})
                                     }
                                 })

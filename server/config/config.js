@@ -1,3 +1,4 @@
+// server/config/config.js
 import pg from 'pg';
 import env from 'dotenv';
 

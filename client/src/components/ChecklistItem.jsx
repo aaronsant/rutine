@@ -1,3 +1,4 @@
+// client/src/components/Checklist.jsx
 import React, {useEffect, useState} from "react";
 import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -11,7 +12,7 @@ import {CSS} from '@dnd-kit/utilities';
 
 
 function ChecklistItem(props){
-    //const [isChecked, setIsChecked] = useState(props.isChecked)
+
     const [anchorEl, setAnchorEl] = useState(null);
     const [toUpdate, setToUpdate] = useState(false);
     const [updatedTask, setUpdatedTask] = useState("");
@@ -52,10 +53,8 @@ function ChecklistItem(props){
     }
 
     function handleChecked(){
-        console.log(`Checkbox ${props.id} clicked and is currently ${props.isChecked}`)
         props.updateProgress(props.id, props.isChecked)
     }
-
 
     useEffect(()=>{
         setUpdatedTask(props.content)
@@ -78,9 +77,8 @@ function ChecklistItem(props){
         closeEditMode();
     }
 
-
     return (
-        toUpdate ? 
+         toUpdate ? 
         <div
             ref={setNodeRef}
             style={style}

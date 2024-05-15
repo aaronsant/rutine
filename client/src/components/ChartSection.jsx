@@ -1,13 +1,12 @@
+// client/src/components/ChartSection.jsx
 import React, { useEffect, useState } from "react";
 import { CartesianGrid, Bar, Brush, BarChart, XAxis, YAxis, Tooltip, Legend, Label, ResponsiveContainer} from "recharts";
 import { getWeek } from "date-fns";
-import Progress from "../pages/Progress";
 
 function ChartSection(props){
 
     const [group, setGroup] = useState("Daily");
     const [data, setData] = useState([])
-    const [interval, setInterval] = useState(6)
     const [yDomainHeight, setYDomainHeight] = useState(0)
     const windowWidth = useWindowWidth()
 
@@ -24,13 +23,7 @@ function ChartSection(props){
     useEffect(()=>{
         const mx = data.reduce((prev, curr) => (prev && prev.tasksCompleted > curr.tasksCompleted) ? prev : curr, 0)
         setYDomainHeight(mx.tasksCompleted)
-    }, [data])
-
-    useEffect(()=>{
-        const mx = data.reduce((prev, curr) => (prev && prev.tasksCompleted > curr.tasksCompleted) ? prev : curr, 0)
-        setYDomainHeight(mx.tasksCompleted)
-    }, [group])
-
+    }, [data, group])
 
     function getDailyData(data){
         let today = new Date();
@@ -129,6 +122,7 @@ function ChartSection(props){
             return "Month"
         }
     }
+
     function CustomTooltip({active, payload, label}) {
         if (active && payload && payload.length) {
             let date = label
@@ -214,11 +208,8 @@ const useWindowWidth = () => {
       function handleResize() {
         setWidth(window.innerWidth)
       }
-      
       window.addEventListener("resize", handleResize)
-      
       handleResize()
-      
       return () => { 
         window.removeEventListener("resize", handleResize)
       }
@@ -226,7 +217,5 @@ const useWindowWidth = () => {
     
     return width
 }
-
-
 
 export default ChartSection;

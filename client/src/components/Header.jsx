@@ -1,3 +1,4 @@
+// client/src/components/Header.jsx
 import React from "react";
 import { Link } from "react-router-dom"
 import HeaderAuth from "./HeaderAuth";
@@ -8,7 +9,7 @@ function Header(props) {
 
     const brand = "RUTINE"; 
     
-    //Sets the content in the header. (Without the last condition and differentiating between null and false, header flashes unautehrized header first )
+    //Sets the content in the header
     function headerContent() {
         if(props.user) {
             return (

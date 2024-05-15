@@ -1,3 +1,4 @@
+// client/src/pages/Register.jsx
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -171,7 +172,7 @@ function Register(props) {
                 </button>
                 }
                 <small> 
-                    Already have an account? <span className="redirect-link"><a  onClick={() => navigate('/Login')}>Sign In</a></span>
+                    Already have an account? <span className="redirect-link"><a  onClick={() => navigate('/login')}>Sign In</a></span>
                 </small>
             </div>
         </div>

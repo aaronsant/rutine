@@ -1,3 +1,4 @@
+// client/src/components/Checklist.jsx
 import React, {useState, useEffect} from "react";
 import ChecklistItem from "./ChecklistItem";
 import AddIcon from '@mui/icons-material/Add';
@@ -66,8 +67,6 @@ function Checklist(props){
           setChecklistItems((items) => {
             const oldIndex = items.map(i => i.progress_id).indexOf(active.id);
             const newIndex = items.map(i => i.progress_id).indexOf(over.id);
-            console.log(oldIndex)
-            console.log(newIndex)
             
             return arrayMove(items, oldIndex, newIndex);
           });
@@ -83,7 +82,7 @@ function Checklist(props){
           //Map the data to obtain an array of the sorted display orders
           const newDisplayOrders = shiftedItems.map(item => item.display_order)
           
-          //Reorder the shifted items by pushing the first item to the end of the array
+          //Reorder the shifted items by pushing the first item to the end of the array or vice versa
           if (oldIndex < newIndex) {
             shiftedItems.push(shiftedItems.shift())
           } else {
@@ -127,7 +126,7 @@ function Checklist(props){
         <div className="checklist">
             <h2 className="checklist-title">{props.title}</h2>
             {checklistItems.length === 0 ?
-            <h5 style={{textAlign: "center"}}><i>Nothing Here Yet...</i></h5>
+            <h5 style={{textAlign: "center"}}><i>Nothing to show yet...</i></h5>
             :
             <DndContext 
                 sensors={sensors}
@@ -155,8 +154,7 @@ function Checklist(props){
                     )     
                 })}
                 </SortableContext>
-            </DndContext>
-            }
+            </DndContext> }
             {showAddSection() ?
             <form className="add-checklist-item">
                     <textarea 
@@ -175,9 +173,7 @@ function Checklist(props){
                     </IconButton>    
             </form>
             : 
-            null 
-            }
-
+            null }
             <div className="progress-bar">
                 <LinearProgress variant="determinate" color="primary" value={100*progressValue}/>
             </div>

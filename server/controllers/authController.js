@@ -1,3 +1,4 @@
+// server/controllers/authController.js
 import passport from "passport";
 import bcrypt from 'bcrypt';
 import Pool from "../config/config.js";
@@ -12,7 +13,7 @@ const clientURL = (process.env.NODE_ENV === "production" ? "http://rutine-238283
 
 // Controller for handling local login
 export const login = async (req, res, next) => {
-    console.log('login reached')
+    //console.log('login reached')
     passport.authenticate("local", {
         successRedirect: `${clientURL}`,
     })(req, res, next); //Whenever using passport.authenticate NEED to have (req,res,next)
@@ -20,9 +21,7 @@ export const login = async (req, res, next) => {
 
 // Controller for handling local login success
 export const loginSuccess = async (req, res, next) => {
-    console.log('success')
     if (req.user) {
-        console.log('login success')
         res.status(200).json({
             success: true,
             message: "Authenticated user successfully",
@@ -38,7 +37,6 @@ export const loginSuccess = async (req, res, next) => {
 
 // Controller for handling local login failure
 export const loginFailed = async (req, res, next) => {
-    console.log('login failed')
     res.status(401).json({
         success: false,
         message: "Failed to authenticate user"
@@ -72,7 +70,6 @@ export const register = async (req, res, next) => {
                     [email, hash, name]);
                     const user = result.rows[0];
                     req.login(user, (err) => {
-                        console.log("NEW USER LOGGED IN")
                         //User registered and logged in, redirect to progress page -------> find out how to redirect from server
                         res.status(200).json({
                             success: true,
@@ -98,13 +95,13 @@ export const loginWithGoogle = async (req, res, next) => {
 // Controller for handling callback for Google auth strategy
 export const googleAuthCallback = async (req, res, next) => {
     passport.authenticate("google", {
-        successRedirect: `/progress`, //${clientURL}
-        failureRedirect: `/login`, //${clientURL}
+        successRedirect: `/progress`, 
+        failureRedirect: `/login`, 
     })(req,res,next);
 }
 
 export const logout = async(req, res) => {
-    console.log("LOGGING OUT")
+    //console.log("LOGGING OUT")
     req.logout(function(err) {
         if (err) { return next(err); }
         res.redirect('/')

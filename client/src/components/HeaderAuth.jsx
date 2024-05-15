@@ -1,3 +1,4 @@
+// client/src/components/HeaderAuth.jsx
 import React ,{ useState} from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { MdMenu } from "react-icons/md";
@@ -14,7 +15,6 @@ function HeaderAuth(props) {
 
     async function logout() {
         try {
-            console.log("logging out")
             await axios.get(`${props.API_URL}/auth/logout`)
             navigate('/')
             window.location.reload()
@@ -71,11 +71,7 @@ function HeaderAuth(props) {
                         >
                             Profile
                         </NavLink>
-                        {//LOGOUT BUTTON BELOW-------------------------------------------------------------------------------------------------------------------
-                        }
-                        <Link 
-                            onClick={logout}
-                        >
+                        <Link onClick={logout}>
                             Logout
                         </Link>
                     </ul>

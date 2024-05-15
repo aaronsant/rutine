@@ -1,6 +1,6 @@
 import express from "express";
 import path, { dirname } from "path";
-import { fileURLToPath } from "url"; // THESE NEXT 2 LINES LET US GRAB DIRECTORY NAME DYNAMICALLY
+import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import env from "dotenv";
 import cors from "cors";

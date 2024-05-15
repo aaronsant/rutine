@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+// client/src/components/CalendarSection.jsx
+import React, { useState } from "react";
 import {
     format,
     startOfWeek,
@@ -29,7 +30,6 @@ function CalendarSection(props){
 
     function onDateClick(day){
         props.setDate(day);
-        console.log(day)
     };
 
     function days(){
@@ -63,28 +63,12 @@ function CalendarSection(props){
                 
             />
             {showCal ? ( 
-            days()[0].getDate() > days()[6].getDate() ? 
-            //calendar showing 2 diff months
-            <div className="calendar-row">
-                {days().map(day =>
-                    <div className="calendar-cell-container" key={day.getTime()}>
-                        {isLastOrFirstDay(day) ? <span className="month-label container-label">{day.toLocaleString('default', { month: 'short' })}</span> : <br/>}
-                        <CalendarDay 
-                            key={day.getTime()}
-                            date={day}
-                            onDateClick={onDateClick}
-                            selectedDate={props.selectedDate}
-                        />
-                    </div>
-                )}
-            </div>
-            :
-             //calendar showing only 1 month
-             <div>
-                <span className="month-label">{days()[0].toLocaleString('default', { month: 'short' })}</span>
+                days()[0].getDate() > days()[6].getDate() ? 
+                //if calendar showing 2 diff months
                 <div className="calendar-row">
                     {days().map(day =>
                         <div className="calendar-cell-container" key={day.getTime()}>
+                            {isLastOrFirstDay(day) ? <span className="month-label container-label">{day.toLocaleString('default', { month: 'short' })}</span> : <br/>}
                             <CalendarDay 
                                 key={day.getTime()}
                                 date={day}
@@ -94,7 +78,23 @@ function CalendarSection(props){
                         </div>
                     )}
                 </div>
-            </div>
+                :
+                //if calendar showing only 1 month
+                <div>
+                    <span className="month-label">{days()[0].toLocaleString('default', { month: 'short' })}</span>
+                    <div className="calendar-row">
+                        {days().map(day =>
+                            <div className="calendar-cell-container" key={day.getTime()}>
+                                <CalendarDay 
+                                    key={day.getTime()}
+                                    date={day}
+                                    onDateClick={onDateClick}
+                                    selectedDate={props.selectedDate}
+                                />
+                            </div>
+                        )}
+                    </div>
+                </div>
              
             ) : null }
         </div>

@@ -1,10 +1,10 @@
+// client/src/pages/Progress.jsx
 import React, {useState, useEffect} from "react";
 import ChecklistSection from "../components/ChecklistSection";
 import ChartSection from "../components/ChartSection";
 import CalendarSection from "../components/CalendarSection";
 import axios from "axios";
 import { isSameDay, isSameWeek, isSameMonth} from "date-fns"
-//import ProgressHero from "../components/ProgressHero";
 
 function Progress(props) {
     const [habitData, setHabitData] = useState([]);
@@ -152,18 +152,6 @@ function Progress(props) {
         return filteredData.sort((a,b) => a.display_order - b.display_order)
     }
 
-    /*
-    async function fillHabits() {
-        try {
-            await axios.post("/fillHabits")
-            console.log("habits filled")
-            window.location.reload()
-        } catch (error) {
-            console.log("error filling habits")
-        }
-    }
-    */
-
     return (
         <div>
             {errorMsg === "" ? null : <div className="prog-page-error" onClick={() => setErrorMsg("")}>{errorMsg}</div>}
@@ -181,9 +169,6 @@ function Progress(props) {
                 updateProgress={updateHabitProgress}
                 reorderData={reorderData}
             />
-            {
-                //<button type="button" onClick={fillHabits}>FILL HABITS TO CURRENT DATE</button>
-            }
             <ChartSection
                 data={habitData}
             /> 

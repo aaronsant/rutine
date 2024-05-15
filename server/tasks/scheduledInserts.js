@@ -2,7 +2,9 @@ import cron from "node-cron";
 import axios from "axios";
 import env from "dotenv";
 
-env.config()
+env.config({
+    path:'../.env'
+})
 const port = process.env.PORT || 5000;
 const serverURL = `http://localhost:${port}`
 
@@ -10,7 +12,6 @@ async function insertActiveHabits(group) {
     try {
         await axios.post(`${serverURL}/api/v1/insert/active`, { group })
     } catch (error) {
-        console.log("error making post request to insert active habits")
         console.log(error)
     }
 }

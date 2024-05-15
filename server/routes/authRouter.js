@@ -1,3 +1,4 @@
+// server/routes/authRouter.js
 import express from 'express';
 import { 
     googleAuthCallback, 
@@ -22,7 +23,6 @@ authRouter.post('/register', register);
 // Router for user login with GOOGLE strategy
 authRouter.get('/google', loginWithGoogle);
 authRouter.get('/google/callback', googleAuthCallback);
-//google callback routes (success and failure)????
 
 // Router for user logout (both GOOGLE and LOCAL)
 authRouter.get('/logout', logout);
