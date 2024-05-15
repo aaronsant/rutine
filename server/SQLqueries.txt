@@ -1,9 +1,9 @@
 CREATE TABLE users(
 	user_id SERIAL PRIMARY KEY,
-	username VARCHAR(50) UNIQUE NOT NULL,
 	email VARCHAR(100) UNIQUE NOT NULL,
-	password VARCHAR(255) NOT NULL,
-	date_created TIMESTAMP NOT NULL
+	password_hash VARCHAR(255) NOT NULL,
+	date_created DATE NOT NULL DEFAULT CURRENT_DATE,
+	name VARCHAR(50)
 );
 
 CREATE TABLE habit_details (
@@ -12,7 +12,8 @@ CREATE TABLE habit_details (
 	habit_group VARCHAR(100) NOT NULL,
 	habit_name VARCHAR(100) NOT NULL,
 	date_created DATE NOT NULL DEFAULT CURRENT_DATE,
-	active BOOLEAN NOT NULL,
+	active BOOLEAN NOT NULL DEFAULT true,
+	display_order INT,
 	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
@@ -21,19 +22,7 @@ CREATE TABLE habit_progress (
 	habit_id INT NOT NULL,
 	date DATE NOT NULL DEFAULT CURRENT_DATE,
 	completed BOOLEAN NOT NULL DEFAULT false,
+	habit_name VARCHAR(100),
 	FOREIGN KEY (habit_id) REFERENCES habit_details(habit_id)
 );
-
-INSERT INTO habit_details 
-(user_id, habit_group, habit_name, date_created, active)
-VALUES
-(1, 'Daily', 'Test 1', '2024-01-30', True),
-(1, 'Weekly', 'Test 2', '2024-01-30', True),
-(2, 'Daily', 'Test 3', '2024-01-30', True),
-(2, 'Monthly', 'Test 4', '2024-01-30', True),
-(3, 'Daily', 'Test 5', '2024-01-30', True),
-(3, 'Weekly', 'Test 6', '2024-01-30', True),
-(1, 'Daily', 'Test 7', '2024-01-29', True),
-(1, 'Monthly', 'Test 8', '2024-01-28', False),
-(2, 'Weekly', 'Test 9', '2024-01-27', False);
 
