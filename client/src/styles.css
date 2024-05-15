@@ -478,15 +478,6 @@ body {
   padding: 10px;
 }
 
-.progress-hero{
-  display: flex;
-  background-image: url("../public/mountain-cover.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 200px;
-}
-
 .register-page{
   display: flex;
   justify-content: center;
