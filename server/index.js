@@ -48,6 +48,18 @@ app.use('/auth', authRouter);
 app.use('/api/v1', habitRouter);
 app.use('/profile', profileRouter);
 
+app.use((req, res, next) => {
+    const host = req.hostname
+    const herokuDomain = "rutine-238283dd5db6.herokuapp.com"
+    const customDomain = "www.myrutine.com"
+    console.log(host)
+    console.log(req.url)
+    if (host == herokuDomain) {
+        res.redirect(301, `http://${customDomain}${req.url}`)
+    }
+    next()
+});
+
 // After defining your routes, anything that doesn't match what's above, we want to return index.html from our built React app
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/../client/build/index.html'))
