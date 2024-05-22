@@ -3,6 +3,8 @@ import React ,{ useState} from "react";
 import { Link, NavLink } from "react-router-dom"
 import { MdMenu } from "react-icons/md";
 import { IconContext } from "react-icons";
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 
 function HeaderUnauth(props) {
     const [showNavbar, setShowNavbar] = useState(false)
@@ -17,9 +19,9 @@ function HeaderUnauth(props) {
                     {props.brand}
                 </Link>
                 <div className="menu-icon" onClick={handleShowNavbar}>
-                    <IconContext.Provider value={{size: 30}}>
-                        <MdMenu />
-                    </IconContext.Provider>
+                    <IconButton>
+                        <MenuIcon />
+                    </IconButton>    
                 </div>
                 <div className={`nav-elements ${showNavbar ? 'active' : ''}`}>            
                     <ul>

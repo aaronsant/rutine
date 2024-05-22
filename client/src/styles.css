@@ -87,7 +87,8 @@ body {
     align-items: center;
     text-align: center;
     padding: 100px;
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(68,97,97,1) 100%);  }
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(68,97,97,1) 100%);  
+  }
 
   .homepage-hero h1{
     font-weight: 800;
@@ -176,6 +177,8 @@ body {
     .checklist {
       width: 80%;
    }
+
+
 }
 
 @media screen and (min-width: 60em) {
@@ -183,6 +186,7 @@ body {
     width: 28%;
  }
 }
+
   .checklist-title {
     text-align: center;
     margin: 0;
@@ -289,10 +293,16 @@ body {
   }
   
   @media (max-width: 600px) {
-    .menu-icon {
-      display: block;
-      cursor: pointer;
-      height: 20px
+    .navbar .menu-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+    }
+  
+    .navbar .menu-icon svg{
+      color: white;
+      font-size: larger;
     }
   
     .nav-elements {
@@ -319,6 +329,18 @@ body {
       margin-right: unset;
       margin-top: 22px;
     }
+
+    .homepage-hero {
+      padding: 20px
+     }
+  
+     .about-section {
+      margin: 20px
+     }
+  
+     .about-box{
+      width: 80%;
+     }
   }
 
 .calendar-zone {

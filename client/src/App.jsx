@@ -29,13 +29,10 @@ function App() {
 const getUser = async () => {
     try {
         const response = await axios.get(`${API_URL}/auth/login/success`)
-        console.log(response)
         if (response.data.user) {
             setUser(response.data.user)
-            console.log("user found")
         } else {
             setUser(false)
-            console.log("no")
         }
     } catch (error) {
         setUser(false)

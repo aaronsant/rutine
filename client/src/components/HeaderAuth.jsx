@@ -29,9 +29,9 @@ function HeaderAuth(props) {
                     {props.brand}
                 </Link>
                 <div className="menu-icon" onClick={handleShowNavbar}>
-                    <IconContext.Provider value={{size: 30}}>
-                        <MdMenu />
-                    </IconContext.Provider>
+                    <IconButton>
+                        <MenuIcon />
+                    </IconButton>    
                 </div>
                 <div className={`nav-elements ${showNavbar ? 'active' : ''}`}>            
                     <ul>
