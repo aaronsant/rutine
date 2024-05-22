@@ -21,6 +21,9 @@ function App() {
 
     useEffect(() => {
         getUser()
+        if (window.location.host.includes('heroku')) {
+            window.location.assign(API_URL + window.location.pathname)
+        }
     }, [])
 
 const getUser = async () => {
