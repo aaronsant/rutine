@@ -23,7 +23,8 @@ function HeaderUnauth(props) {
                 </div>
                 <div className={`nav-elements ${showNavbar ? 'active' : ''}`}>            
                     <ul>
-                        <NavLink 
+                        <NavLink
+                            onClick={()=> {setShowNavbar(false)}}
                             to="/"
                             className={({ isActive, isPending, isTransitioning }) =>
                                 [
@@ -36,7 +37,8 @@ function HeaderUnauth(props) {
                             Home
                         </NavLink>
                         <NavLink 
-                            to="/Login"
+                            onClick={()=> {setShowNavbar(false)}}
+                            to="/login"
                             className={({ isActive, isPending, isTransitioning }) =>
                                 [
                                 isPending ? "pending" : "",
@@ -48,7 +50,8 @@ function HeaderUnauth(props) {
                             Login
                         </NavLink>
                         <NavLink 
-                            to="/Register"
+                            onClick={()=> {setShowNavbar(false)}}
+                            to="/register"
                             className={({ isActive, isPending, isTransitioning }) =>
                                 [
                                 isPending ? "pending" : "",

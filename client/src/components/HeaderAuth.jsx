@@ -21,6 +21,7 @@ function HeaderAuth(props) {
         } catch (error) {
             console.log(error)
         }
+        setShowNavbar(false)
     }
 
     return (
@@ -35,7 +36,8 @@ function HeaderAuth(props) {
                 </div>
                 <div className={`nav-elements ${showNavbar ? 'active' : ''}`}>            
                     <ul>
-                        <NavLink 
+                        <NavLink
+                            onClick={()=> {setShowNavbar(false)}}
                             to="/"
                             className={({ isActive, isPending, isTransitioning }) =>
                                 [
@@ -48,7 +50,8 @@ function HeaderAuth(props) {
                             Home
                         </NavLink>
                         <NavLink 
-                            to="/Progress"
+                            onClick={()=> {setShowNavbar(false)}}
+                            to="/progress"
                             className={({ isActive, isPending, isTransitioning }) =>
                                 [
                                 isPending ? "pending" : "",
@@ -59,8 +62,9 @@ function HeaderAuth(props) {
                         >
                             Progress
                         </NavLink>
-                        <NavLink 
-                            to="/Profile"
+                        <NavLink
+                            onClick={()=> {setShowNavbar(false)}}
+                            to="/profile"
                             className={({ isActive, isPending, isTransitioning }) =>
                                 [
                                 isPending ? "pending" : "",
