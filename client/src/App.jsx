@@ -17,7 +17,7 @@ import axios from "axios";
 
 function App() {
     const [user, setUser] = useState(null)
-    const API_URL = (process.env.NODE_ENV === "production" ? "https://rutine-238283dd5db6.herokuapp.com": "http://localhost:5000")
+    const API_URL = (process.env.NODE_ENV === "production" ? "http://www.myrutine.com": "http://localhost:5000")//rutine-238283dd5db6.herokuapp.com
 
     useEffect(() => {
         getUser()
@@ -26,10 +26,13 @@ function App() {
 const getUser = async () => {
     try {
         const response = await axios.get(`${API_URL}/auth/login/success`)
+        console.log(response)
         if (response.data.user) {
             setUser(response.data.user)
+            console.log("user found")
         } else {
             setUser(false)
+            console.log("no")
         }
     } catch (error) {
         setUser(false)
