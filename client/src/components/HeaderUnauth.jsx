@@ -1,8 +1,6 @@
 // client/src/components/HeaderUnauth.jsx
 import React ,{ useState} from "react";
 import { Link, NavLink } from "react-router-dom"
-import { MdMenu } from "react-icons/md";
-import { IconContext } from "react-icons";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 

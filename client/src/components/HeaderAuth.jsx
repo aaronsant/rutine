@@ -1,8 +1,8 @@
 // client/src/components/HeaderAuth.jsx
 import React ,{ useState} from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom"
-import { MdMenu } from "react-icons/md";
-import { IconContext } from "react-icons";
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 import axios from "axios";
 
 function HeaderAuth(props) {
