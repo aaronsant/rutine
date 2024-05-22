@@ -53,9 +53,9 @@ app.use((req, res, next) => {
     const host = req.hostname
     const herokuDomain = "rutine-238283dd5db6.herokuapp.com"
     const customDomain = "www.myrutine.com"
-    console.log(host)
-    console.log(req.url)
+    console.log(`DOMAIN IS ${host} AND URL IS ${req.url} AND INCLUDES GOOGLE: ${req.url.includes('google')}`)
     if (host == herokuDomain && !req.url.includes('google')) {
+        console.log("we are redirecting")
         res.redirect(301, `http://${customDomain}${req.url}`)
     }
     next()
