@@ -1,6 +1,6 @@
 # Project Name
 
-Rutine
+Rutine - Simplify Your Task Management
 
 ## Description
 
