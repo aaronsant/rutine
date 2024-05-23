@@ -6,7 +6,7 @@ Rutine - Simplify Your Task Management
 
 Rutine is a productivity web application designed to help you manage and track your daily, weekly, and monthly habits. With a clean and uncluttered design, Rutine focuses on making it easy for users to stay organized and monitor their progress over time. Built using React, Node.js, Express, and PostgreSQL, Rutine offers a seamless experience across devices and provides powerful tools to keep you on track.
 
-Access the prject at [www.myrutine.com](www.myrutine.com)
+Access the prject at [www.myrutine.com](https://www.myrutine.com)
 
 ## Table of Contents
 
